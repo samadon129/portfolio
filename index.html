@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdihamid Ahmed Omar — Network Engineer &amp; Cybersecurity Enthusiast</title>
+<meta name="description" content="Portfolio of Abdihamid Ahmed Omar — senior Computer Science &amp; IT student specializing in Networking and Security, ICT teacher, and hands-on network/cybersecurity lab builder.">
+<meta name="keywords" content="Abdihamid Ahmed Omar, network engineer, cybersecurity, CCNA, network security, ICT teacher, IT portfolio">
+<meta name="author" content="Abdihamid Ahmed Omar">
+<meta name="theme-color" content="#0B0F14">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abdihamid Ahmed Omar — Network Engineer &amp; Cybersecurity Enthusiast">
+<meta property="og:description" content="Senior CS/IT student specializing in Networking and Security. 3+ years teaching ICT. Building practical network and security labs.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='30' r='8' fill='%23E8A33D'/%3E%3Ccircle cx='25' cy='70' r='8' fill='%234FD1C5'/%3E%3Ccircle cx='75' cy='70' r='8' fill='%234FD1C5'/%3E%3Cpath d='M50 30L25 70M50 30L75 70' stroke='%23324150' stroke-width='4'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:            #0B0F14;
+  --bg-raised:     #10161D;
+  --surface:       #121922;
+  --surface-2:     #161F29;
+  --border:        #212C38;
+  --border-soft:   #1A232D;
+  --text:          #E7EDF3;
+  --text-dim:      #9AA7B4;
+  --text-faint:    #67757F;
+  --accent:        #E8A33D;   /* activity-light amber */
+  --accent-soft:   #E8A33D26;
+  --link:          #4FD1C5;   /* link-light teal */
+  --link-soft:     #4FD1C526;
+  --danger:        #E8613D;
+  --radius-s:      6px;
+  --radius-m:      10px;
+  --radius-l:      16px;
+  --font-display:  'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body:     'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --maxw:          1180px;
+  --nav-h:         72px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* subtle circuit / dot-grid backdrop, fixed so it reads as one continuous fabric behind every section */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle at 1px 1px, #263241 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity:0.35;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 95%);
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+button{ font-family:inherit; cursor:pointer; }
+input, textarea{ font-family:inherit; }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+section{ position:relative; z-index:1; }
+
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em; color:var(--text); }
+.h-kicker{
+  font-family:var(--font-display);
+  font-size:12.5px;
+  letter-spacing:0.06em;
+  color:var(--link);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:14px;
+  text-transform:none;
+}
+.h-kicker::before{ content:"//"; color:var(--text-faint); }
+.section-title{ font-size:clamp(26px,3.4vw,38px); line-height:1.15; margin-bottom:14px; }
+.section-sub{ color:var(--text-dim); max-width:640px; font-size:15.5px; margin-bottom:48px; }
+.section-pad{ padding:110px 0; border-top:1px solid var(--border-soft); }
+.mono{ font-family:var(--font-display); }
+.pill{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--font-display); font-size:12px; letter-spacing:0.02em;
+  padding:5px 10px; border-radius:999px;
+  background:var(--surface-2); border:1px solid var(--border); color:var(--text-dim);
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-l);
+  transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{ border-color:#324150; transform:translateY(-3px); box-shadow:0 18px 40px -20px rgba(0,0,0,.6); }
+
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--font-display); font-size:13.5px; font-weight:500; letter-spacing:0.01em;
+  padding:13px 22px; border-radius:var(--radius-s);
+  border:1px solid transparent; cursor:pointer; transition:all .2s ease;
+  white-space:nowrap;
+}
+.btn-primary{ background:var(--accent); color:#191204; }
+.btn-primary:hover{ background:#f4b358; box-shadow:0 8px 24px -8px var(--accent-soft); }
+.btn-outline{ background:transparent; color:var(--text); border-color:var(--border); }
+.btn-outline:hover{ border-color:var(--link); color:var(--link); }
+.btn-sm{ padding:9px 14px; font-size:12.5px; }
+:focus-visible{ outline:2px solid var(--link); outline-offset:3px; border-radius:4px; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  background:rgba(11,15,20,0.78);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-soft);
+  transition:border-color .3s ease, background .3s ease;
+}
+.nav-inner{ width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:600; font-size:15px; }
+.brand-dot{ width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); animation:blink 2.4s ease-in-out infinite; }
+@keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+.nav-links{ display:flex; align-items:center; gap:2px; }
+.nav-links a{
+  font-family:var(--font-display); font-size:13px; color:var(--text-dim);
+  padding:8px 13px; border-radius:6px; transition:color .2s ease, background .2s ease;
+}
+.nav-links a:hover, .nav-links a.active{ color:var(--text); background:var(--surface-2); }
+.nav-cta{ display:flex; align-items:center; gap:10px; }
+.hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px; }
+.hamburger span{ width:22px; height:2px; background:var(--text); transition:all .25s ease; display:block; }
+.mobile-panel{
+  position:fixed; top:var(--nav-h); left:0; right:0; z-index:99;
+  background:var(--bg-raised); border-bottom:1px solid var(--border);
+  padding:10px 24px 22px; display:none; flex-direction:column; gap:2px;
+  max-height:calc(100vh - var(--nav-h)); overflow-y:auto;
+}
+.mobile-panel.open{ display:flex; }
+.mobile-panel a{ font-family:var(--font-display); font-size:14.5px; color:var(--text-dim); padding:13px 4px; border-bottom:1px solid var(--border-soft); }
+.mobile-panel a:hover{ color:var(--text); }
+
+@media (max-width: 900px){
+  .nav-links{ display:none; }
+  .hamburger{ display:flex; }
+  .nav-cta .btn-outline{ display:none; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  padding-top:calc(var(--nav-h) + 90px);
+  padding-bottom:90px;
+  min-height:92vh;
+  display:flex; align-items:center;
+}
+.hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; }
+.hero-eyebrow{
+  font-family:var(--font-display); font-size:13px; color:var(--link);
+  display:inline-flex; align-items:center; gap:10px; margin-bottom:22px;
+  padding:7px 12px; border:1px solid var(--border); border-radius:999px; background:var(--surface);
+}
+.hero-eyebrow .cursor{ display:inline-block; width:7px; height:14px; background:var(--link); animation:blink 1.1s steps(1) infinite; }
+.hero h1{ font-size:clamp(38px,5.4vw,62px); line-height:1.05; margin-bottom:18px; }
+.hero h1 .accent{ color:var(--accent); }
+.hero-role{
+  font-family:var(--font-display); font-size:clamp(14px,1.6vw,17px); color:var(--text-dim);
+  margin-bottom:22px; display:flex; flex-wrap:wrap; gap:8px 6px; align-items:center;
+}
+.hero-role span:not(.sep){ color:var(--text); }
+.sep{ color:var(--text-faint); }
+.hero-desc{ color:var(--text-dim); font-size:16.5px; max-width:520px; margin-bottom:34px; }
+.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px; }
+.hero-socials{ display:flex; gap:14px; align-items:center; }
+.social-btn{
+  width:40px; height:40px; border-radius:var(--radius-s); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; color:var(--text-dim);
+  transition:all .2s ease; background:var(--surface);
+}
+.social-btn:hover{ color:var(--link); border-color:var(--link); transform:translateY(-2px); }
+
+.hero-visual{ position:relative; }
+.hero-visual svg{ width:100%; height:auto; }
+.node-label{ font-family:var(--font-display); font-size:9.5px; fill:var(--text-faint); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+.about-body p{ color:var(--text-dim); margin-bottom:18px; font-size:15.5px; }
+.about-body strong{ color:var(--text); font-weight:600; }
+.interest-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+.stats-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius-l); overflow:hidden; }
+.stat-box{ background:var(--surface); padding:28px 24px; }
+.stat-num{ font-family:var(--font-display); font-size:26px; color:var(--accent); margin-bottom:6px; }
+.stat-label{ color:var(--text-dim); font-size:13px; }
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.skill-card{ padding:28px; }
+.skill-head{ display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.skill-icon{ width:38px; height:38px; border-radius:var(--radius-s); background:var(--surface-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--link); flex-shrink:0; }
+.skill-card h3{ font-size:15.5px; }
+.skill-items{ display:flex; flex-wrap:wrap; gap:8px; }
+.skill-chip{ font-family:var(--font-display); font-size:12px; color:var(--text-dim); background:var(--bg-raised); border:1px solid var(--border-soft); padding:6px 10px; border-radius:6px; transition:all .2s ease; }
+.skill-chip:hover{ color:var(--text); border-color:var(--link); }
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.projects-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.proj-card{ overflow:hidden; display:flex; flex-direction:column; }
+.proj-thumb{ height:170px; background:linear-gradient(160deg,var(--bg-raised),var(--surface-2)); border-bottom:1px solid var(--border); position:relative; }
+.proj-thumb svg{ width:100%; height:100%; }
+.proj-body{ padding:24px 26px 26px; display:flex; flex-direction:column; flex:1; }
+.proj-body h3{ font-size:17px; margin-bottom:10px; }
+.proj-body p{ color:var(--text-dim); font-size:14.5px; margin-bottom:16px; flex:1; }
+.proj-tags{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+.tag{ font-family:var(--font-display); font-size:11px; color:var(--link); background:var(--link-soft); padding:4px 9px; border-radius:5px; }
+.skills-demo{ font-size:12.5px; color:var(--text-faint); margin-bottom:20px; }
+.skills-demo b{ color:var(--text-dim); font-weight:500; }
+.proj-actions{ display:flex; gap:10px; }
+.projects-footer{ display:flex; justify-content:center; margin-top:44px; }
+
+/* ============================================================
+   TIMELINE (experience / education)
+   ============================================================ */
+.timeline{ position:relative; padding-left:36px; }
+.timeline::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:linear-gradient(var(--link),var(--border) 90%); }
+.tl-item{ position:relative; padding-bottom:44px; }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-dot{ position:absolute; left:-36px; top:4px; width:13px; height:13px; border-radius:50%; background:var(--bg); border:2px solid var(--link); }
+.tl-item.is-current .tl-dot{ background:var(--link); box-shadow:0 0 0 4px var(--link-soft); }
+.tl-card{ padding:26px 28px; }
+.tl-meta{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px; }
+.tl-role{ font-size:17px; margin-bottom:4px; }
+.tl-org{ color:var(--text-dim); font-size:14px; margin-bottom:16px; }
+.tl-list{ display:grid; gap:9px; }
+.tl-list li{ color:var(--text-dim); font-size:14.5px; padding-left:18px; position:relative; }
+.tl-list li::before{ content:"▸"; color:var(--link); position:absolute; left:0; font-size:12px; top:3px; }
+
+/* ============================================================
+   CERTIFICATIONS
+   ============================================================ */
+.cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.cert-card{ padding:26px; display:flex; flex-direction:column; gap:14px; }
+.cert-icon{ width:40px; height:40px; border-radius:var(--radius-s); background:var(--surface-2); border:1px solid var(--border-soft); display:flex; align-items:center; justify-content:center; color:var(--text-faint); }
+.cert-empty{ border-style:dashed; align-items:flex-start; }
+.cert-empty h3{ font-size:14.5px; color:var(--text-dim); font-weight:500; }
+.cert-empty p{ font-size:13px; color:var(--text-faint); }
+.cert-note{
+  margin-top:32px; padding:18px 22px; border:1px dashed var(--border); border-radius:var(--radius-m);
+  color:var(--text-faint); font-size:13.5px; display:flex; gap:12px; align-items:flex-start;
+}
+
+/* ============================================================
+   LEARNING JOURNEY
+   ============================================================ */
+.learn-grid{ display:flex; flex-wrap:wrap; gap:12px; }
+.learn-chip{
+  display:flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px;
+  background:var(--surface); border:1px solid var(--border); font-family:var(--font-display); font-size:13.5px; color:var(--text-dim);
+}
+.learn-chip .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; }
+.contact-info h2{ font-size:clamp(26px,3vw,34px); margin-bottom:16px; }
+.contact-info p{ color:var(--text-dim); margin-bottom:32px; font-size:15.5px; max-width:420px; }
+.contact-channels{ display:grid; gap:14px; }
+.channel{ display:flex; align-items:center; gap:14px; padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-m); background:var(--surface); }
+.channel .skill-icon{ background:var(--bg-raised); }
+.channel-label{ font-size:11.5px; color:var(--text-faint); font-family:var(--font-display); }
+.channel-value{ font-size:14.5px; color:var(--text); }
+.form-card{ padding:32px; }
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.field{ display:flex; flex-direction:column; gap:8px; }
+.field label{ font-family:var(--font-display); font-size:12px; color:var(--text-dim); }
+.field input, .field textarea{
+  background:var(--bg-raised); border:1px solid var(--border); border-radius:var(--radius-s);
+  padding:12px 14px; color:var(--text); font-size:14.5px; transition:border-color .2s ease;
+}
+.field input:focus, .field textarea:focus{ border-color:var(--link); outline:none; }
+.field textarea{ resize:vertical; min-height:120px; }
+.form-status{ font-size:13px; color:var(--link); margin-top:14px; min-height:18px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{ border-top:1px solid var(--border-soft); padding:48px 0 32px; }
+.footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:28px; margin-bottom:32px; }
+.footer-brand p{ color:var(--text-faint); font-size:13.5px; margin-top:6px; }
+.footer-links{ display:flex; gap:22px; flex-wrap:wrap; }
+.footer-links a{ font-family:var(--font-display); font-size:13px; color:var(--text-dim); }
+.footer-links a:hover{ color:var(--link); }
+.footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; border-top:1px solid var(--border-soft); color:var(--text-faint); font-size:12.5px; }
+.footer-socials{ display:flex; gap:12px; }
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-visual{ order:-1; max-width:440px; margin:0 auto 12px; }
+  .about-grid{ grid-template-columns:1fr; gap:40px; }
+  .skills-grid{ grid-template-columns:1fr; }
+  .projects-grid{ grid-template-columns:1fr; }
+  .cert-grid{ grid-template-columns:1fr 1fr; }
+  .contact-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  .section-pad{ padding:76px 0; }
+  .cert-grid{ grid-template-columns:1fr; }
+  .stats-grid{ grid-template-columns:1fr; }
+  .form-row{ grid-template-columns:1fr; }
+  .hero{ padding-top:calc(var(--nav-h) + 56px); min-height:auto; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand"><span class="brand-dot"></span>Abdihamid Ahmed Omar</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-outline btn-sm" href="assets/cv/Abdihamid-Ahmed-Omar-CV.pdf" download>Download CV</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#contact">Contact</a>
+  <a href="assets/cv/Abdihamid-Ahmed-Omar-CV.pdf" download style="color:var(--accent);">Download CV ↓</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="cursor"></span>whoami</div>
+      <h1>Abdihamid Ahmed<br> <span class="accent">Omar</span></h1>
+      <div class="hero-role">
+        <span>Computer Science Student</span><span class="sep">/</span>
+        <span>Network Engineer</span><span class="sep">/</span>
+        <span>Cybersecurity Enthusiast</span><span class="sep">/</span>
+        <span>ICT Teacher</span>
+      </div>
+      <p class="hero-desc">I'm a senior Computer Science and IT student specializing in <strong style="color:var(--text)">networking and security</strong>. I enjoy building practical infrastructure and security labs — designing topologies, hardening devices, and troubleshooting the way real networks actually break.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Projects</a>
+        <a href="assets/cv/Abdihamid-Ahmed-Omar-CV.pdf" download class="btn btn-outline">Download CV</a>
+      </div>
+      <div class="hero-socials">
+        <a class="social-btn" href="https://www.linkedin.com/in/abdihamid-samadon-45a4b0242" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" fill="currentColor"/><path d="M5.25 7.02C6.35 7.02 7.25 6.12 7.25 5.01C7.25 3.9 6.35 3 5.25 3C4.15 3 3.25 3.9 3.25 5.01C3.25 6.12 4.15 7.02 5.25 7.02Z" fill="currentColor"/><path d="M9.94 8.5H13.16V10.02H13.21C13.66 9.17 14.76 8.28 16.4 8.28C19.81 8.28 20.5 10.53 20.5 13.46V20.5H17.12V14.15C17.12 12.74 17.1 10.94 15.16 10.94C13.19 10.94 12.9 12.46 12.9 14.05V20.5H9.94V8.5Z" fill="currentColor"/></svg>
+        </a>
+        <a class="social-btn" href="https://github.com/your-username" target="_blank" rel="noopener" aria-label="GitHub profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.22C2 16.74 4.87 20.56 8.84 21.92C9.34 22.01 9.53 21.7 9.53 21.43C9.53 21.19 9.52 20.42 9.51 19.5C6.73 20.11 6.14 18.21 6.14 18.21C5.68 17.02 5.03 16.71 5.03 16.71C4.13 16.08 5.1 16.1 5.1 16.1C6.1 16.17 6.63 17.15 6.63 17.15C7.5 18.68 8.92 18.24 9.48 17.99C9.57 17.34 9.83 16.9 10.11 16.65C7.89 16.4 5.55 15.52 5.55 11.6C5.55 10.48 5.95 9.57 6.65 8.86C6.54 8.6 6.19 7.56 6.75 6.16C6.75 6.16 7.6 5.89 9.5 7.18C10.29 6.96 11.15 6.85 12 6.85C12.85 6.85 13.71 6.96 14.5 7.18C16.4 5.89 17.25 6.16 17.25 6.16C17.81 7.56 17.46 8.6 17.35 8.86C18.05 9.57 18.45 10.48 18.45 11.6C18.45 15.53 16.1 16.4 13.87 16.64C14.22 16.95 14.54 17.56 14.54 18.49C14.54 19.82 14.53 20.9 14.53 21.43C14.53 21.7 14.71 22.02 15.22 21.92C19.16 20.55 22 16.74 22 12.22C22 6.58 17.52 2 12 2Z" fill="currentColor"/></svg>
+        </a>
+        <a class="social-btn" href="mailto:your.email@example.com" aria-label="Send email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="edgeA" d="M240 190 L120 120"/>
+          <path id="edgeB" d="M240 190 L360 120"/>
+          <path id="edgeC" d="M240 190 L120 280"/>
+          <path id="edgeD" d="M240 190 L360 280"/>
+          <path id="edgeE" d="M120 120 L60 60"/>
+          <path id="edgeF" d="M360 280 L420 340"/>
+        </defs>
+        <g stroke="#22303C" stroke-width="1.4" fill="none">
+          <use href="#edgeA"/><use href="#edgeB"/><use href="#edgeC"/><use href="#edgeD"/><use href="#edgeE"/><use href="#edgeF"/>
+        </g>
+        <!-- moving packets -->
+        <g fill="#E8A33D">
+          <circle r="3.4"><animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto"><mpath href="#edgeA"/></animateMotion></circle>
+          <circle r="3.4"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.4s"><mpath href="#edgeC"/></animateMotion></circle>
+        </g>
+        <g fill="#4FD1C5">
+          <circle r="3.4"><animateMotion dur="2.9s" repeatCount="indefinite" begin="0.8s"><mpath href="#edgeB"/></animateMotion></circle>
+          <circle r="3.4"><animateMotion dur="3.6s" repeatCount="indefinite" begin="1.2s"><mpath href="#edgeD"/></animateMotion></circle>
+        </g>
+        <!-- core node -->
+        <circle cx="240" cy="190" r="26" fill="#121922" stroke="#E8A33D" stroke-width="1.6"/>
+        <circle cx="240" cy="190" r="26" fill="none" stroke="#E8A33D" stroke-width="1.6" opacity="0.5">
+          <animate attributeName="r" values="26;38;26" dur="2.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0;0.5" dur="2.6s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M231 190h18M240 181v18M234 184l12 12M246 184l-12 12" stroke="#E8A33D" stroke-width="1.4"/>
+        <text x="240" y="230" text-anchor="middle" class="node-label">CORE SWITCH</text>
+
+        <!-- edge nodes -->
+        <g>
+          <circle cx="120" cy="120" r="18" fill="#121922" stroke="#324150" stroke-width="1.4"/>
+          <rect x="112" y="113" width="16" height="14" rx="2" fill="none" stroke="#8FA0AC" stroke-width="1.3"/>
+          <text x="120" y="150" text-anchor="middle" class="node-label">ROUTER</text>
+        </g>
+        <g>
+          <circle cx="360" cy="120" r="18" fill="#121922" stroke="#324150" stroke-width="1.4"/>
+          <path d="M353 128l7-16 7 16z" fill="none" stroke="#8FA0AC" stroke-width="1.3"/>
+          <text x="360" y="150" text-anchor="middle" class="node-label">FIREWALL</text>
+        </g>
+        <g>
+          <circle cx="120" cy="280" r="18" fill="#121922" stroke="#324150" stroke-width="1.4"/>
+          <rect x="111" y="273" width="18" height="13" rx="1.5" fill="none" stroke="#8FA0AC" stroke-width="1.3"/>
+          <text x="120" y="310" text-anchor="middle" class="node-label">SERVER</text>
+        </g>
+        <g>
+          <circle cx="360" cy="280" r="18" fill="#121922" stroke="#324150" stroke-width="1.4"/>
+          <rect x="352" y="272" width="16" height="11" rx="1.5" fill="none" stroke="#8FA0AC" stroke-width="1.3"/>
+          <path d="M356 283v4M364 283v4" stroke="#8FA0AC" stroke-width="1.3"/>
+          <text x="360" y="310" text-anchor="middle" class="node-label">CLIENT LAN</text>
+        </g>
+        <g>
+          <circle cx="60" cy="60" r="11" fill="#121922" stroke="#22303C" stroke-width="1.2"/>
+          <text x="60" y="42" text-anchor="middle" class="node-label">ISP</text>
+        </g>
+        <g>
+          <circle cx="420" cy="340" r="11" fill="#121922" stroke="#22303C" stroke-width="1.2"/>
+          <text x="420" y="365" text-anchor="middle" class="node-label">VLAN 20</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section-pad" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="about-body">
+        <div class="h-kicker">about</div>
+        <h2 class="section-title">Grounded in fundamentals, built through practice</h2>
+        <p>I'm a <strong>senior Computer Science and IT student</strong> specializing in <strong>Networking and Security</strong>. Alongside my studies, I have more than <strong>three years of experience teaching Information and Communication Technology (ICT)</strong> at high school level — which shaped how I explain technical ideas clearly and patiently.</p>
+        <p>My interests sit at the intersection of network engineering and cybersecurity: routing and switching, firewalls, network infrastructure, Linux systems, and the kind of hands-on troubleshooting that only shows up once you've actually built the thing.</p>
+        <p>I believe in learning through hands-on practice. Most of what I know comes from labs I've built myself — configuring, breaking, and fixing networks until the theory actually clicks.</p>
+        <div class="interest-tags">
+          <span class="pill">Routing &amp; Switching</span>
+          <span class="pill">Firewalls</span>
+          <span class="pill">Linux</span>
+          <span class="pill">Network Troubleshooting</span>
+          <span class="pill">Lab Environments</span>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num">3+ Years</div><div class="stat-label">ICT Teaching Experience</div></div>
+        <div class="stat-box"><div class="stat-num">Computer Science</div><div class="stat-label">Academic Background</div></div>
+        <div class="stat-box"><div class="stat-num">Networking &amp; Security</div><div class="stat-label">Specialization</div></div>
+        <div class="stat-box"><div class="stat-num">Hands-On Labs</div><div class="stat-label">Practical Learning</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section class="section-pad" id="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">skills</div>
+      <h2 class="section-title">Technical skills</h2>
+      <p class="section-sub">Organized by the areas I actively work in — from routing protocols to the tools I use to build and test them.</p>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="section-pad" id="projects">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">projects</div>
+      <h2 class="section-title">Networking &amp; security labs</h2>
+      <p class="section-sub">Practical builds I've configured and tested myself — the projects below are structured so new labs can be dropped in as they're completed.</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="projects-footer">
+      <a href="#projects" class="btn btn-outline" id="viewAllBtn">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section class="section-pad" id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">experience</div>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-sub">Professional experience to date. This timeline is structured so new roles can be added as my career grows.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item is-current">
+        <div class="tl-dot"></div>
+        <div class="tl-card card">
+          <div class="tl-meta"><span class="pill">3+ Years</span><span class="pill">Ongoing</span></div>
+          <div class="tl-role">ICT Teacher</div>
+          <div class="tl-org">High School</div>
+          <ul class="tl-list">
+            <li>Teaching Information and Communication Technology (ICT) to high school students</li>
+            <li>Preparing lessons and learning materials for practical computer skills</li>
+            <li>Supporting students in building foundational technical literacy</li>
+            <li>Explaining technical concepts in a clear, understandable way</li>
+            <li>Managing classroom activities and student engagement</li>
+            <li>Assessing student performance and progress</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION
+     ============================================================ -->
+<section class="section-pad" id="education">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">education</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item is-current">
+        <div class="tl-dot"></div>
+        <div class="tl-card card">
+          <div class="tl-meta"><span class="pill">Senior Student</span></div>
+          <div class="tl-role">Bachelor's Degree — Computer Science &amp; Information Technology</div>
+          <div class="tl-org">Specialization: Networking and Security</div>
+          <ul class="tl-list">
+            <li>Coursework and practical labs focused on network engineering and security</li>
+            <li>Currently in senior year of study</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CERTIFICATIONS
+     ============================================================ -->
+<section class="section-pad" id="certifications">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">certifications</div>
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-sub"></p>
+    </div>
+    <div class="cert-grid" id="certGrid"></div>
+    <div class="cert-note">
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LEARNING JOURNEY
+     ============================================================ -->
+<section class="section-pad" id="learning">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="h-kicker">currently learning</div>
+      <h2 class="section-title">Learning journey</h2>
+      <p class="section-sub">Areas I'm actively developing — presented as ongoing growth, not established expertise.</p>
+    </div>
+    <div class="learn-grid reveal" id="learnGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="section-pad" id="contact">
+  <div class="wrap">
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <div class="h-kicker">contact</div>
+        <h2>Let's connect</h2>
+        <p>Open to opportunities in network engineering, cybersecurity, and IT infrastructure. If you're a recruiter, a company, or a fellow technology professional, I'd like to hear from you.</p>
+        <div class="contact-channels">
+          <div class="channel">
+            <div class="skill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><div class="channel-label">EMAIL</div><div class="channel-value" id="contactEmail">ccabdixamiidbidaaye@gmail.com</div></div>
+          </div>
+          <div class="channel">
+            <div class="skill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" fill="currentColor"/><path d="M5.25 7.02C6.35 7.02 7.25 6.12 7.25 5.01C7.25 3.9 6.35 3 5.25 3C4.15 3 3.25 3.9 3.25 5.01C3.25 6.12 4.15 7.02 5.25 7.02Z" fill="currentColor"/><path d="M9.94 8.5H13.16V10.02H13.21C13.66 9.17 14.76 8.28 16.4 8.28C19.81 8.28 20.5 10.53 20.5 13.46V20.5H17.12V14.15C17.12 12.74 17.1 10.94 15.16 10.94C13.19 10.94 12.9 12.46 12.9 14.05V20.5H9.94V8.5Z" fill="currentColor"/></svg></div>
+            <div><div class="channel-label">LINKEDIN</div><div class="channel-value">https://www.linkedin.com/in/abdihamid-samadon-45a4b0242</div></div>
+          </div>
+          <div class="channel">
+            <div class="skill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.22C2 16.74 4.87 20.56 8.84 21.92C9.34 22.01 9.53 21.7 9.53 21.43C9.53 21.19 9.52 20.42 9.51 19.5C6.73 20.11 6.14 18.21 6.14 18.21C5.68 17.02 5.03 16.71 5.03 16.71C4.13 16.08 5.1 16.1 5.1 16.1C6.1 16.17 6.63 17.15 6.63 17.15C7.5 18.68 8.92 18.24 9.48 17.99C9.57 17.34 9.83 16.9 10.11 16.65C7.89 16.4 5.55 15.52 5.55 11.6C5.55 10.48 5.95 9.57 6.65 8.86C6.54 8.6 6.19 7.56 6.75 6.16C6.75 6.16 7.6 5.89 9.5 7.18C10.29 6.96 11.15 6.85 12 6.85C12.85 6.85 13.71 6.96 14.5 7.18C16.4 5.89 17.25 6.16 17.25 6.16C17.81 7.56 17.46 8.6 17.35 8.86C18.05 9.57 18.45 10.48 18.45 11.6C18.45 15.53 16.1 16.4 13.87 16.64C14.22 16.95 14.54 17.56 14.54 18.49C14.54 19.82 14.53 20.9 14.53 21.43C14.53 21.7 14.71 22.02 15.22 21.92C19.16 20.55 22 16.74 22 12.22C22 6.58 17.52 2 12 2Z" fill="currentColor"/></svg></div>
+            <div><div class="channel-label">GITHUB</div><div class="channel-value">github.com/your-username</div></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-card card" id="contactForm">
+        <div class="form-row">
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" required autocomplete="name"></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required autocomplete="email"></div>
+        </div>
+        <div class="field" style="margin-bottom:16px;">
+          <label for="cf-subject">Subject</label><input id="cf-subject" name="subject" type="text" required>
+        </div>
+        <div class="field" style="margin-bottom:20px;">
+          <label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-dot"></span>Abdihamid Ahmed Omar</div>
+        <p>Computer Science · Networking · Security</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Abdihamid Ahmed Omar. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://github.com/your-username" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a href="mailto:your.email@example.com" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENT DATA — edit these arrays to update the site.
+   ============================================================ */
+
+const SKILLS = [
+  { category: "Networking", icon: "router",
+    items: ["Cisco Networking","CCNA Concepts","VLANs","VLAN Trunking","Inter-VLAN Routing","STP","EtherChannel","OSPF","BGP Fundamentals","RIP","ACLs","NAT","DHCP","DNS","SSH","Network Troubleshooting"] },
+  { category: "Network Security", icon: "shield",
+    items: ["Network Security Fundamentals","Access Control","Port Security","Dynamic ARP Inspection","DHCP Snooping","BPDU Guard","VLAN Hopping Prevention","Firewall Fundamentals","FortiGate","Security Hardening"] },
+  { category: "Tools & Platforms", icon: "terminal",
+    items: ["Cisco Packet Tracer","EVE-NG","VMware","GNS3","Linux","Kali Linux","Ubuntu","Windows","PuTTY"] },
+  { category: "Other Skills", icon: "users",
+    items: ["ICT Teaching","Technical Documentation","Problem Solving","Troubleshooting","Communication","Teamwork"] },
+];
+
+const ICONS = {
+  router: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="7" rx="1.5"/><path d="M7 10V7a2 2 0 012-2h6a2 2 0 012 2v3M7 17v2M12 17v2M17 17v2"/><circle cx="7" cy="13.5" r=".6" fill="currentColor"/><circle cx="10" cy="13.5" r=".6" fill="currentColor"/></svg>',
+  shield: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>',
+  terminal: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg>',
+  users: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M22 20c0-2.6-1.9-4.7-4.5-5.4"/></svg>',
+};
+
+const PROJECTS = [
+  { title: "Enterprise Network Lab",
+    desc: "Designed and configured a multi-device enterprise network using Cisco technologies — covering routing, switching, and inter-department connectivity.",
+    tech: ["Cisco IOS","VLANs","Trunking","OSPF","ACLs","NAT","DHCP"],
+    demonstrates: "Enterprise topology design, routing configuration, access control",
+    href: "#", githubHref: "" },
+  { title: "EVE-NG Network Security Lab",
+    desc: "Built a practical network environment in EVE-NG with routers, switches, and virtual PCs to test firewall functionality alongside VLAN and ACL/NAT configuration.",
+    tech: ["EVE-NG","Firewall","VLANs","ACLs","NAT"],
+    demonstrates: "Virtual lab design, firewall policy testing, segmentation",
+    href: "#", githubHref: "" },
+  { title: "Routing & Switching Labs",
+    desc: "A collection of practical Cisco networking laboratories covering VLANs, STP, EtherChannel, inter-VLAN routing, OSPF, and BGP fundamentals.",
+    tech: ["VLANs","STP","EtherChannel","OSPF","BGP"],
+    demonstrates: "Routing protocol configuration, redundancy, troubleshooting",
+    href: "#", githubHref: "" },
+  { title: "Network Security Lab",
+    desc: "Practical implementation and testing of network security mechanisms including Port Security, DHCP Snooping, Dynamic ARP Inspection, and BPDU Guard.",
+    tech: ["Port Security","DHCP Snooping","DAI","BPDU Guard"],
+    demonstrates: "Layer 2 hardening, attack-surface reduction",
+    href: "#", githubHref: "" },
+];
+
+const LEARNING = ["Network Engineering","Cybersecurity","Linux","Firewall Technologies","Advanced Routing","Network Automation","Security Operations"];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function renderSkills(){
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = SKILLS.map(cat => `
+    <div class="skill-card card">
+      <div class="skill-head">
+        <div class="skill-icon">${ICONS[cat.icon]}</div>
+        <h3>${cat.category}</h3>
+      </div>
+      <div class="skill-items">
+        ${cat.items.map(i => `<span class="skill-chip">${i}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function projTopo(i){
+  // simple varied topology glyph per card, purely decorative
+  const seeds = [
+    'M40 85 L100 40 L160 85 M100 40 L100 130',
+    'M30 60 L90 60 L90 110 L150 110 M90 60 L90 30',
+    'M40 40 L160 40 M40 40 L40 120 M160 40 L160 120 M40 120 L160 120 M100 40 L100 120',
+    'M50 100 L100 50 L150 100 M50 100 L150 100',
+  ];
+  return `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+    <path d="${seeds[i % seeds.length]}" stroke="#22303C" stroke-width="1.6" fill="none"/>
+    ${seeds[i % seeds.length].match(/M(\d+) (\d+)/g).map(m=>{
+      const [,x,y]=m.match(/M(\d+) (\d+)/);
+      return `<circle cx="${x}" cy="${y}" r="4.5" fill="#0F151C" stroke="${i%2?'#4FD1C5':'#E8A33D'}" stroke-width="1.4"/>`;
+    }).join('')}
+  </svg>`;
+}
+
+function renderProjects(){
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = PROJECTS.map((p,i) => `
+    <div class="proj-card card">
+      <div class="proj-thumb">${projTopo(i)}</div>
+      <div class="proj-body">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="proj-tags">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="skills-demo"><b>Demonstrates:</b> ${p.demonstrates}</div>
+        <div class="proj-actions">
+          <a href="${p.href}" class="btn btn-outline btn-sm">View Project</a>
+          ${p.githubHref ? `<a href="${p.githubHref}" class="btn btn-outline btn-sm" target="_blank" rel="noopener">GitHub</a>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCerts(){
+  const grid = document.getElementById('certGrid');
+  const slots = ["Cisco Certification","Networking Certification","Cybersecurity Certification"];
+  grid.innerHTML = slots.map(s => `
+    <div class="cert-card card cert-empty">
+      <div class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg></div>
+      <div>
+        <h3>${s}</h3>
+        <p>Name: Networking Fundamentals · Issuer: Netcad· Date · Credential ID · Link</p>
+
+         
+      </div>   const CERTIFICATIONS = [
+     {
+       name: "Cisco Certified Network Associate (CCNA)",
+       issuer: "Cisco",
+       date: "Jan 2027",
+       credentialId: "ABC123XYZ",
+       link: "https://www.credly.com/badges/your-badge-id"
+     },
+   ];
+    </div>
+  `).join('');
+}
+
+function renderLearning(){
+  const grid = document.getElementById('learnGrid');
+  grid.innerHTML = LEARNING.map(l => `<div class="learn-chip"><span class="dot"></span>${l}</div>`).join('');
+}
+
+renderSkills();
+renderProjects();
+renderCerts();
+renderLearning();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   NAV: mobile menu + scroll state + active link
+   ============================================================ */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+hamburgerBtn.addEventListener('click', () => {
+  const open = mobilePanel.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobilePanel.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+}));
+
+const navLinks = document.querySelectorAll('.nav-links a, .mobile-panel a');
+const sections = [...document.querySelectorAll('section[id], header[id]')];
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => navObserver.observe(s));
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // NOTE: this form has no backend wired up yet.
+  // Connect it to a service such as Formspree, EmailJS, or a serverless function,
+  // or replace this handler with a POST request to your own endpoint.
+  const name = document.getElementById('cf-name').value.trim();
+  formStatus.textContent = name
+    ? `Thanks, ${name} — this form isn't connected to an email service yet. In the meantime, reach out directly at the email above.`
+    : `This form isn't connected to an email service yet. In the meantime, reach out directly at the email above.`;
+});
+</script>
+</body>
+</html>
